@@ -1,5 +1,8 @@
 import networkx as nx
-import logging
+import log
+
+logger = log.get_logger(__name__)
+
 
 class Cluster:
     """
@@ -36,13 +39,13 @@ class Cluster:
         self.__tree = None
         self.__tree_leaves = []
         self.__id = cluster_id.split("_")[0].split("c")[1]
-
-        for node in graph.nodes:
+        nodes = sorted(list(graph.nodes))
+        for node in nodes:
             self.__peers.append(node)
         self.__object = None
         self.__object_path = None
         if leader_id is not None:
-            logging.info("SETTING LEADER %s FOR CLUSTER %s", leader_id, self.__cluster_id)
+            logger.debug("SETTING LEADER {} FOR CLUSTER {}".format(leader_id, self.__cluster_id))
             self.__leader_id = leader_id
         else:
             self.__leader_id = self.__id
@@ -53,6 +56,32 @@ class Cluster:
         self.__intermediate = False
         self.__data = None
 
+        self.__index = None
+
+    def get_graph(self):
+        return self.__graph
+
+    def get_leader(self):
+        return self.__leader_id
+
+    def get_object(self):
+        return self.__object
+
+    def set_index(self, index):
+        self.__index = index
+
+    def get_index(self):
+        return self.__index
+
+    def get_cluster_id(self):
+        return self.__cluster_id
+
+    def get_id(self):
+        return self.__id
+
+    def get_peers(self):
+        return self.__peers
+
     def set_tree(self, tree):
         self.__tree = tree
 
@@ -62,22 +91,31 @@ class Cluster:
     def set_previous_cluster(self, cluster):
         self.__previous_cluster = cluster
 
+    def get_previous_cluster(self):
+        return self.__previous_cluster
+
     def set_leader(self, leader_id):
         self.__leader_id = leader_id
 
     def set_intermediate(self):
         self.__intermediate = True
 
+    def intermediate(self):
+        return self.__intermediate
+
     def print(self):
-        logging.info("Cluster id is %s", self.__cluster_id)
-        logging.info("Nodes are %s", self.__graph.nodes)
+        logger.debug("Cluster id is {}".format(self.__cluster_id))
+        logger.debug("Nodes are {}".format(self.__graph.nodes))
         if self.__tree is not None:
             self.__tree.print()
         else:
-            logging.info("No Tree")
+            logger.debug("No Tree")
 
     def set_tree_leaves(self, leaves):
         self.__tree_leaves = leaves
+
+    def get_tree_leaves(self):
+        return self.__tree_leaves
 
     def send(self, object):
         pass
@@ -86,7 +124,7 @@ class Cluster:
         pass
 
     def publish(self, obj):
-        assert(self.__level == 0)
+        assert (self.__level == 0)
         obj.set_owner(self.__cluster_id)
         self.__object = obj
 
@@ -94,9 +132,4 @@ class Cluster:
         assert (self.__level == 0)
 
     def lookup(self, object):
-        assert(self.__level == 0)
-
-
-
-
-
+        assert (self.__level == 0)
