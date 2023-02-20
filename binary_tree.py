@@ -2,6 +2,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 
+logger = log.get_logger(__name__)
+
 
 class BinaryTree:
     """
@@ -26,6 +28,12 @@ class BinaryTree:
         self.__data = None
         self.__parent = None
 
+    def set_left_child(self, left):
+        self.__left = left
+
+    def set_right_child(self, right):
+        self.__right = right
+
     def get_left_child(self):
         return self.__left
 
@@ -36,6 +44,9 @@ class BinaryTree:
         self.__root_id = value
 
     def get_node_value(self):
+        return self.__root_id
+
+    def get_root_id(self):
         return self.__root_id
 
     def insert_right(self, new_node):
@@ -110,7 +121,7 @@ class BinaryTree:
                 G.add_node(node.__right.__root_id)
                 G.add_edge(node.__root_id, node.__right.__root_id)
 
-            if node.left is not None:
+            if node.__left is not None:
                 node_stack.append(node.__left)
                 G.add_node(node.__left)
                 G.add_edge(node.__root_id, node.__left.__root_id)
@@ -134,22 +145,22 @@ def test_tree():
     print_tree(tree)
 
 
-def get_leafs(tree):
+def get_leaves(tree):
     leaf_nodes = []
-    find_leafs(tree, leaf_nodes)
-    print("LEAFS ARE ", leaf_nodes)
+    find_leaves(tree, leaf_nodes)
+    print("LEAVES ARE ", leaf_nodes)
     return leaf_nodes
 
 
-def find_leafs(tree, leaf_nodes):
+def find_leaves(tree, leaf_nodes):
     if tree is None:
         return leaf_nodes
 
-    if tree.left is None and tree.right is None:
+    if tree.get_left_child() is None and tree.get_right_child() is None:
         leaf_nodes.append(tree)
 
-    if tree.left is not None:
-        find_leafs(tree.left, leaf_nodes)
+    if tree.get_left_child() is not None:
+        find_leaves(tree.get_left_child(), leaf_nodes)
 
-    if tree.left is not None:
-        find_leafs(tree.right, leaf_nodes)
+    if tree.get_left_child() is not None:
+        find_leaves(tree.get_right_child(), leaf_nodes)
