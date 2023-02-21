@@ -10,15 +10,11 @@ class BinaryTree:
     A class to hold a binary tree.
     Attributes
     ----------
-    left : node
-        left node of the tree
-    right : node
-        right node of the tree
-    root_id : str
-        root of the tree
-    data: lst
-        data the tree holds
-    parent: parent of the tree
+        left(node) : left node of the tree
+        right(node) : right node of the tree
+        root_id(str) : root of the tree
+        data(lst) : data the tree holds
+        parent(str) : parent of the tree
     """
 
     def __init__(self, root_id):
