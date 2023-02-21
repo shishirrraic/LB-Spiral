@@ -130,10 +130,10 @@ class Simulation:
         height_of_cluster = math.ceil(math.log(diameter, 2)) + 1
         logger.debug("HEIGHT OF HIERARCHY IS {}".format(height_of_cluster))
 
-        # lowest level clusers
+        # lowest level clusters
         logger.debug("LOWEST LEVEL CLUSTERS")
         for n in graph.nodes():
-            paths = nx.single_source_dijkstra_path_length(graph, n, 0, weight='weight')
+            # paths = nx.single_source_dijkstra_path_length(graph, n, 0, weight='weight')
             cluster_graph = graph.subgraph([n])
             cluster = Cluster('c' + str(n) + '_l' + '0', cluster_graph, 0)
             self.__network.add_cluster_level(0)
@@ -189,7 +189,7 @@ class Simulation:
         self.__network.add_cluster_level(0)
 
         for n in graph.nodes():
-            paths = nx.single_source_dijkstra_path_length(graph, n, 0, weight='weight')
+            # paths = nx.single_source_dijkstra_path_length(graph, n, 0, weight='weight')
             cluster_graph = graph.subgraph([n])
             cluster = Cluster('c' + str(n) + '_l' + '0', cluster_graph, 0)
             self.__network.add_cluster(0, cluster)
@@ -241,11 +241,9 @@ class Simulation:
                         peer_count = clustered_peers_count[str(peer)]
                         while peer_count > math.log(self.__peer_count, 2):
                             for cluster in reversed(self.__network.clusters_by_level(i + 1)):
-                                if clustered_peers_count[str(peer)] > math.log(self.__peer_count,
-                                                                               2) and cluster.get_graph().has_node(
-                                    str(peer)):
+                                if clustered_peers_count[str(peer)] > math.log(self.__peer_count, 2) and \
+                                        cluster.get_graph().has_node(str(peer)):
                                     cluster.get_graph().remove_node(str(peer))
-
                                     peer_count = peer_count - 1
                                     if str(peer) in clustered_peers_list:
                                         clustered_peers_list.remove(str(peer))
@@ -534,13 +532,11 @@ class Simulation:
             logger.debug("PREPARED CLUSTER CONTAIN MAP {}".format(cluster_contain_in_upper_level_map))
 
             # build the binary trees
-            current_tree = BinaryTree('temp')
-
             for root_cluster_key in cluster_contain_in_upper_level_map:
                 current_tree = BinaryTree(root_cluster_key)
                 height_of_tree = int(math.log(
                     1 if len(cluster_contain_in_upper_level_map[root_cluster_key]) == 0 else 2 ** (
-                                len(cluster_contain_in_upper_level_map[root_cluster_key]) - 1).bit_length(), 2))
+                            len(cluster_contain_in_upper_level_map[root_cluster_key]) - 1).bit_length(), 2))
 
                 if len(cluster_contain_in_upper_level_map[root_cluster_key]) == 1:
                     height_of_tree = 1
@@ -669,22 +665,22 @@ class Simulation:
             pickle.dump(self.__network, output, pickle.HIGHEST_PROTOCOL)
 
     def load_network(self, input_file):
-        with open(input_file, 'rb') as input:
-            self.__network = pickle.load(input)
+        with open(input_file, 'rb') as input_f:
+            self.__network = pickle.load(input_f)
 
     def run(self, rounds):
         start = time.time()
 
         # simulations to run
         # initial publisher and object
-        for round in range(0, rounds):
+        for rnd in range(0, rounds):
             publisher = self.__network.find_cluster_by_id('c0_l0')
             obj = Object('obj1', publisher.get_cluster_id())
 
             self.__network.publish(publisher, obj)
             results = []
             r = random.Random()
-            r.seed("test" + str(round))
+            r.seed("test" + str(rnd))
             # r.seed("test")
 
             optimal_processing_load = OrderedDict()
@@ -756,7 +752,7 @@ class Simulation:
 
             file = open(
                 os.path.join(path, str(self.__op_count) + '-Operations__' + str(self.__peer_count) + '-Peers' + str(
-                    round) + '.txt'), 'w'
+                    rnd) + '.txt'), 'w'
             )
 
             json.dump(output, file)
