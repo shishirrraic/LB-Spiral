@@ -54,9 +54,10 @@ class Cluster:
         self.__previous = None
         self.__previous_cluster = None
         self.__intermediate = False
-        self.__data = None
-
         self.__index = None
+
+    def set_root(self):
+        self.__root = True
 
     def get_graph(self):
         return self.__graph
@@ -102,6 +103,9 @@ class Cluster:
 
     def intermediate(self):
         return self.__intermediate
+
+    def get_level(self):
+        return self.__level
 
     def print(self):
         logger.debug("Cluster id is {}".format(self.__cluster_id))

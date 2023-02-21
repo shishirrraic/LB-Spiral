@@ -34,6 +34,9 @@ class Network:
         self.__root_cluster_id = None
         self.__size = nx.number_of_nodes(graph)
 
+    def set_root_cluster(self,root_cluster_id):
+        self.__root_cluster_id = root_cluster_id
+
     def add_peer(self, peer_id, peer):
         self.__peers[peer_id] = peer
 
@@ -88,7 +91,7 @@ class Network:
     def remove_cluster_by_id(self, cluster_id, level):
         temp = []
         for cluster in self.__clusters[level]:
-            if cluster.__cluster_id is not cluster_id:
+            if cluster.get_cluster_id() is not cluster_id:
                 temp.append(cluster)
         self.__clusters = temp
 
@@ -98,7 +101,7 @@ class Network:
         node_pos = nx.spring_layout(self.__network_graph)
         edge_weight = nx.get_edge_attributes(self.__network_graph, 'weight')
         # Draw the nodes
-        nx.draw_networkx_nodes(self.__network_graph, pos=node_pos, nodelist=[str(i) for i in cluster.__graph])
+        nx.draw_networkx_nodes(self.__network_graph, pos=node_pos, nodelist=[str(i) for i in cluster.get_graph()])
         nx.draw_networkx(self.__network_graph, node_pos, node_color='grey', node_size=100)
         # Draw the edges
         nx.draw_networkx_edges(self.__network_graph, node_pos, edge_color='black')
@@ -106,7 +109,7 @@ class Network:
         nx.draw_networkx_edge_labels(self.__network_graph, node_pos, edge_labels=edge_weight)
         plt.title(cluster_id)
         plt.show()
-        graph = cluster.__graph
+        graph = cluster.get_graph()
         print("THE GRAPH IS ", graph)
 
     def publish(self, cluster, obj):
@@ -463,7 +466,7 @@ class Network:
                         intersection = check_for_intersection(level_clusters[inner_cl_index].get_cluster_id(),
                                                               obj.get_path())
                         if intersection is not None and owner_id in level_clusters[inner_cl_index].get_graph().nodes and \
-                                mover_id in level_clusters[inner_cl_index].graph.nodes:
+                                mover_id in level_clusters[inner_cl_index].get_graph().nodes:
                             d = dict()
                             d['intersection'] = intersection
                             d['path'] = new_path
