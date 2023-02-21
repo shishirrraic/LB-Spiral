@@ -2,8 +2,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 
-logger = log.get_logger(__name__)
-
 
 class BinaryTree:
     """
