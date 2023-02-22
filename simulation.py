@@ -83,12 +83,12 @@ class Simulation:
             self.build_clusters_at_least_one_and_at_most_logn(graph)
             # self._build_clusters_no_overlapping(graph)
             self.build_tree(graph)
-            self.save_network('./graphs/' + graph_input + '_network')
+            # self.save_network('./graphs/' + graph_input + '_network')
             logger.debug("DONE CREATING NEW NETWORK")
             exit(0)
 
         else:
-            print("LOADING NETWORK FROM INPUT FILE")
+            logger.debug("LOADING NETWORK FROM INPUT FILE")
             # load network
             self.load_network('./graphs/' + graph_input + '_network')
 
@@ -559,8 +559,8 @@ class Simulation:
                             if level + 1 == height_of_tree:
                                 tree_name = root_cluster_key
                             else:
-                                tree_name = lower_level_trees[0].get_node_value() + "_" + lower_level_trees[
-                                    1].get_node_value()
+                                tree_name = lower_level_trees[0].get_root_id() + "_" + lower_level_trees[
+                                    1].get_root_id()
 
                             temp_tree = BinaryTree(tree_name)
                             temp_data = []
@@ -598,7 +598,7 @@ class Simulation:
                                 if level + 1 == height_of_tree:
                                     tree_name = root_cluster_key
                                 else:
-                                    tree_name = lower_level_trees[0].get_node_value()
+                                    tree_name = lower_level_trees[0].get_root_id()
 
                                 temp_tree = BinaryTree(tree_name)
                                 temp_tree.set_data(lower_level_trees[0].get_data())

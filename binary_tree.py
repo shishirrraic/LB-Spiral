@@ -34,12 +34,6 @@ class BinaryTree:
     def get_right_child(self):
         return self.__right
 
-    def set_node_value(self, value):
-        self.__root_id = value
-
-    def get_node_value(self):
-        return self.__root_id
-
     def get_root_id(self):
         return self.__root_id
 
@@ -74,7 +68,7 @@ class BinaryTree:
     def print(self):
         if self is not None:
             print_tree(self.get_left_child())
-            print(self.get_node_value())
+            print(self.get_root_id())
             print_tree(self.get_right_child())
 
     def display_tree(self):
@@ -125,9 +119,9 @@ def print_tree(tree):
     if tree is not None:
         print_tree(tree.get_left_child())
         if tree.get_parent() is None:
-            print('...', tree.get_node_value(), '...')
+            print('...', tree.get_root_id(), '...')
         else:
-            print(tree.get_node_value())
+            print(tree.get_root_id())
         print_tree(tree.get_right_child())
 
 
