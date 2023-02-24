@@ -1,0 +1,1413 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d4" for="edge" attr.name="weight" attr.type="long" />
+  <key id="d3" for="edge" attr.name="customer" attr.type="string" />
+  <key id="d2" for="edge" attr.name="type" attr.type="string" />
+  <key id="d1" for="node" attr.name="peers" attr.type="long" />
+  <key id="d0" for="node" attr.name="type" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="0">
+      <data key="d0">T</data>
+    </node>
+    <node id="1">
+      <data key="d0">T</data>
+    </node>
+    <node id="2">
+      <data key="d0">T</data>
+    </node>
+    <node id="3">
+      <data key="d0">T</data>
+    </node>
+    <node id="4">
+      <data key="d0">M</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="5">
+      <data key="d0">M</data>
+      <data key="d1">5</data>
+    </node>
+    <node id="6">
+      <data key="d0">M</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="7">
+      <data key="d0">M</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="8">
+      <data key="d0">M</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="9">
+      <data key="d0">M</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="10">
+      <data key="d0">M</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="11">
+      <data key="d0">M</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="12">
+      <data key="d0">M</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="13">
+      <data key="d0">M</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="14">
+      <data key="d0">M</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="15">
+      <data key="d0">M</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="16">
+      <data key="d0">M</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="17">
+      <data key="d0">M</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="18">
+      <data key="d0">M</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="19">
+      <data key="d0">M</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="20">
+      <data key="d0">M</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="21">
+      <data key="d0">M</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="22">
+      <data key="d0">M</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="23">
+      <data key="d0">CP</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="24">
+      <data key="d0">CP</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="25">
+      <data key="d0">CP</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="26">
+      <data key="d0">CP</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="27">
+      <data key="d0">CP</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="28">
+      <data key="d0">CP</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="29">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="30">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="31">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="32">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="33">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="34">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="35">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="36">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="37">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="38">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="39">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="40">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="41">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="42">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="43">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="44">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="45">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="46">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="47">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="48">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="49">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="50">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="51">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="52">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="53">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="54">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="55">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="56">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="57">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="58">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="59">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="60">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="61">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="62">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="63">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="64">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="65">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="66">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="67">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="68">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="69">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="70">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="71">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="72">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="73">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="74">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="75">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="76">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="77">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="78">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="79">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="80">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="81">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="82">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="83">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="84">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="85">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="86">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="87">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="88">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="89">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="90">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="91">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="92">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="93">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="94">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="95">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="96">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="97">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="98">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="99">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="100">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="101">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="102">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="103">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="104">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="105">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="106">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="107">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="108">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="109">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="110">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="111">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="112">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="113">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="114">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="115">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="116">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="117">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="118">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="119">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="120">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="121">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="122">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="123">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="124">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="125">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="126">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <node id="127">
+      <data key="d0">C</data>
+      <data key="d1">0</data>
+    </node>
+    <edge source="0" target="1">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="0" target="2">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="0" target="3">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="0" target="5">
+      <data key="d2">transit</data>
+      <data key="d3">5</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="0" target="6">
+      <data key="d2">transit</data>
+      <data key="d3">6</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="0" target="8">
+      <data key="d2">transit</data>
+      <data key="d3">8</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="0" target="9">
+      <data key="d2">transit</data>
+      <data key="d3">9</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="0" target="10">
+      <data key="d2">transit</data>
+      <data key="d3">10</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="0" target="12">
+      <data key="d2">transit</data>
+      <data key="d3">12</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="0" target="13">
+      <data key="d2">transit</data>
+      <data key="d3">13</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="0" target="14">
+      <data key="d2">transit</data>
+      <data key="d3">14</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="0" target="18">
+      <data key="d2">transit</data>
+      <data key="d3">18</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="0" target="20">
+      <data key="d2">transit</data>
+      <data key="d3">20</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="0" target="21">
+      <data key="d2">transit</data>
+      <data key="d3">21</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="0" target="23">
+      <data key="d2">transit</data>
+      <data key="d3">23</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="0" target="24">
+      <data key="d2">transit</data>
+      <data key="d3">24</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="0" target="25">
+      <data key="d2">transit</data>
+      <data key="d3">25</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="0" target="53">
+      <data key="d2">transit</data>
+      <data key="d3">53</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="0" target="100">
+      <data key="d2">transit</data>
+      <data key="d3">100</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="1" target="2">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="1" target="3">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="1" target="4">
+      <data key="d2">transit</data>
+      <data key="d3">4</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="1" target="10">
+      <data key="d2">transit</data>
+      <data key="d3">10</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="1" target="23">
+      <data key="d2">transit</data>
+      <data key="d3">23</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="1" target="25">
+      <data key="d2">transit</data>
+      <data key="d3">25</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="1" target="28">
+      <data key="d2">transit</data>
+      <data key="d3">28</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="2" target="3">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="2" target="4">
+      <data key="d2">transit</data>
+      <data key="d3">4</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="2" target="6">
+      <data key="d2">transit</data>
+      <data key="d3">6</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="2" target="7">
+      <data key="d2">transit</data>
+      <data key="d3">7</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="2" target="9">
+      <data key="d2">transit</data>
+      <data key="d3">9</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="2" target="10">
+      <data key="d2">transit</data>
+      <data key="d3">10</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="2" target="11">
+      <data key="d2">transit</data>
+      <data key="d3">11</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="2" target="15">
+      <data key="d2">transit</data>
+      <data key="d3">15</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="2" target="18">
+      <data key="d2">transit</data>
+      <data key="d3">18</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="2" target="22">
+      <data key="d2">transit</data>
+      <data key="d3">22</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="2" target="23">
+      <data key="d2">transit</data>
+      <data key="d3">23</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="2" target="24">
+      <data key="d2">transit</data>
+      <data key="d3">24</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="2" target="25">
+      <data key="d2">transit</data>
+      <data key="d3">25</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="2" target="36">
+      <data key="d2">transit</data>
+      <data key="d3">36</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="2" target="48">
+      <data key="d2">transit</data>
+      <data key="d3">48</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="2" target="55">
+      <data key="d2">transit</data>
+      <data key="d3">55</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="2" target="71">
+      <data key="d2">transit</data>
+      <data key="d3">71</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="2" target="72">
+      <data key="d2">transit</data>
+      <data key="d3">72</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="2" target="125">
+      <data key="d2">transit</data>
+      <data key="d3">125</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="3" target="7">
+      <data key="d2">transit</data>
+      <data key="d3">7</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="3" target="88">
+      <data key="d2">transit</data>
+      <data key="d3">88</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="3" target="107">
+      <data key="d2">transit</data>
+      <data key="d3">107</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="4" target="8">
+      <data key="d2">transit</data>
+      <data key="d3">8</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="4" target="16">
+      <data key="d2">transit</data>
+      <data key="d3">16</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="4" target="42">
+      <data key="d2">transit</data>
+      <data key="d3">42</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="4" target="89">
+      <data key="d2">transit</data>
+      <data key="d3">89</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="4" target="12">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="4" target="15">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="4" target="5">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="4" target="7">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="4" target="9">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="4" target="17">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="5" target="7">
+      <data key="d2">transit</data>
+      <data key="d3">7</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="5" target="12">
+      <data key="d2">transit</data>
+      <data key="d3">12</data>
+      <data key="d4">6</data>
+    </edge>
+    <edge source="5" target="14">
+      <data key="d2">transit</data>
+      <data key="d3">14</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="5" target="15">
+      <data key="d2">transit</data>
+      <data key="d3">15</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="5" target="22">
+      <data key="d2">transit</data>
+      <data key="d3">22</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="5" target="45">
+      <data key="d2">transit</data>
+      <data key="d3">45</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="5" target="47">
+      <data key="d2">transit</data>
+      <data key="d3">47</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="5" target="49">
+      <data key="d2">transit</data>
+      <data key="d3">49</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="5" target="51">
+      <data key="d2">transit</data>
+      <data key="d3">51</data>
+      <data key="d4">6</data>
+    </edge>
+    <edge source="5" target="58">
+      <data key="d2">transit</data>
+      <data key="d3">58</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="5" target="70">
+      <data key="d2">transit</data>
+      <data key="d3">70</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="5" target="79">
+      <data key="d2">transit</data>
+      <data key="d3">79</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="5" target="84">
+      <data key="d2">transit</data>
+      <data key="d3">84</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="5" target="90">
+      <data key="d2">transit</data>
+      <data key="d3">90</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="5" target="101">
+      <data key="d2">transit</data>
+      <data key="d3">101</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="5" target="103">
+      <data key="d2">transit</data>
+      <data key="d3">103</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="5" target="104">
+      <data key="d2">transit</data>
+      <data key="d3">104</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="5" target="8">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="5" target="9">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="5" target="16">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="5" target="19">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="6" target="29">
+      <data key="d2">transit</data>
+      <data key="d3">29</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="6" target="33">
+      <data key="d2">transit</data>
+      <data key="d3">33</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="6" target="44">
+      <data key="d2">transit</data>
+      <data key="d3">44</data>
+      <data key="d4">6</data>
+    </edge>
+    <edge source="6" target="59">
+      <data key="d2">transit</data>
+      <data key="d3">59</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="6" target="73">
+      <data key="d2">transit</data>
+      <data key="d3">73</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="6" target="77">
+      <data key="d2">transit</data>
+      <data key="d3">77</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="6" target="95">
+      <data key="d2">transit</data>
+      <data key="d3">95</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="6" target="98">
+      <data key="d2">transit</data>
+      <data key="d3">98</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="6" target="102">
+      <data key="d2">transit</data>
+      <data key="d3">102</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="6" target="123">
+      <data key="d2">transit</data>
+      <data key="d3">123</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="6" target="12">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="7" target="15">
+      <data key="d2">transit</data>
+      <data key="d3">15</data>
+      <data key="d4">6</data>
+    </edge>
+    <edge source="7" target="17">
+      <data key="d2">transit</data>
+      <data key="d3">17</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="7" target="27">
+      <data key="d2">transit</data>
+      <data key="d3">27</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="7" target="30">
+      <data key="d2">transit</data>
+      <data key="d3">30</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="7" target="50">
+      <data key="d2">transit</data>
+      <data key="d3">50</data>
+      <data key="d4">6</data>
+    </edge>
+    <edge source="7" target="65">
+      <data key="d2">transit</data>
+      <data key="d3">65</data>
+      <data key="d4">6</data>
+    </edge>
+    <edge source="7" target="86">
+      <data key="d2">transit</data>
+      <data key="d3">86</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="7" target="122">
+      <data key="d2">transit</data>
+      <data key="d3">122</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="7" target="12">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="7" target="23">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="8" target="16">
+      <data key="d2">transit</data>
+      <data key="d3">16</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="8" target="19">
+      <data key="d2">transit</data>
+      <data key="d3">19</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="8" target="38">
+      <data key="d2">transit</data>
+      <data key="d3">38</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="8" target="40">
+      <data key="d2">transit</data>
+      <data key="d3">40</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="8" target="43">
+      <data key="d2">transit</data>
+      <data key="d3">43</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="8" target="68">
+      <data key="d2">transit</data>
+      <data key="d3">68</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="8" target="93">
+      <data key="d2">transit</data>
+      <data key="d3">93</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="8" target="94">
+      <data key="d2">transit</data>
+      <data key="d3">94</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="8" target="112">
+      <data key="d2">transit</data>
+      <data key="d3">112</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="8" target="9">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="9" target="27">
+      <data key="d2">transit</data>
+      <data key="d3">27</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="9" target="37">
+      <data key="d2">transit</data>
+      <data key="d3">37</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="9" target="57">
+      <data key="d2">transit</data>
+      <data key="d3">57</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="9" target="120">
+      <data key="d2">transit</data>
+      <data key="d3">120</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="9" target="13">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="10" target="46">
+      <data key="d2">transit</data>
+      <data key="d3">46</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="10" target="54">
+      <data key="d2">transit</data>
+      <data key="d3">54</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="10" target="127">
+      <data key="d2">transit</data>
+      <data key="d3">127</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="10" target="15">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="12" target="26">
+      <data key="d2">transit</data>
+      <data key="d3">26</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="12" target="52">
+      <data key="d2">transit</data>
+      <data key="d3">52</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="12" target="96">
+      <data key="d2">transit</data>
+      <data key="d3">96</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="12" target="105">
+      <data key="d2">transit</data>
+      <data key="d3">105</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="12" target="115">
+      <data key="d2">transit</data>
+      <data key="d3">115</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="12" target="15">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="12" target="17">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="12" target="21">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">6</data>
+    </edge>
+    <edge source="13" target="39">
+      <data key="d2">transit</data>
+      <data key="d3">39</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="13" target="41">
+      <data key="d2">transit</data>
+      <data key="d3">41</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="13" target="60">
+      <data key="d2">transit</data>
+      <data key="d3">60</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="13" target="61">
+      <data key="d2">transit</data>
+      <data key="d3">61</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="13" target="62">
+      <data key="d2">transit</data>
+      <data key="d3">62</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="13" target="63">
+      <data key="d2">transit</data>
+      <data key="d3">63</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="13" target="66">
+      <data key="d2">transit</data>
+      <data key="d3">66</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="13" target="69">
+      <data key="d2">transit</data>
+      <data key="d3">69</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="13" target="74">
+      <data key="d2">transit</data>
+      <data key="d3">74</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="13" target="76">
+      <data key="d2">transit</data>
+      <data key="d3">76</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="13" target="78">
+      <data key="d2">transit</data>
+      <data key="d3">78</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="13" target="80">
+      <data key="d2">transit</data>
+      <data key="d3">80</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="13" target="91">
+      <data key="d2">transit</data>
+      <data key="d3">91</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="13" target="97">
+      <data key="d2">transit</data>
+      <data key="d3">97</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="13" target="106">
+      <data key="d2">transit</data>
+      <data key="d3">106</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="13" target="116">
+      <data key="d2">transit</data>
+      <data key="d3">116</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="13" target="119">
+      <data key="d2">transit</data>
+      <data key="d3">119</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="13" target="121">
+      <data key="d2">transit</data>
+      <data key="d3">121</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="13" target="124">
+      <data key="d2">transit</data>
+      <data key="d3">124</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="14" target="21">
+      <data key="d2">transit</data>
+      <data key="d3">21</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="14" target="35">
+      <data key="d2">transit</data>
+      <data key="d3">35</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="14" target="109">
+      <data key="d2">transit</data>
+      <data key="d3">109</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="15" target="27">
+      <data key="d2">transit</data>
+      <data key="d3">27</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="15" target="34">
+      <data key="d2">transit</data>
+      <data key="d3">34</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="16" target="19">
+      <data key="d2">transit</data>
+      <data key="d3">19</data>
+      <data key="d4">6</data>
+    </edge>
+    <edge source="16" target="26">
+      <data key="d2">transit</data>
+      <data key="d3">26</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="16" target="32">
+      <data key="d2">transit</data>
+      <data key="d3">32</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="16" target="42">
+      <data key="d2">transit</data>
+      <data key="d3">42</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="16" target="75">
+      <data key="d2">transit</data>
+      <data key="d3">75</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="16" target="99">
+      <data key="d2">transit</data>
+      <data key="d3">99</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="16" target="118">
+      <data key="d2">transit</data>
+      <data key="d3">118</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="17" target="117">
+      <data key="d2">transit</data>
+      <data key="d3">117</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="18" target="20">
+      <data key="d2">transit</data>
+      <data key="d3">20</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="18" target="28">
+      <data key="d2">transit</data>
+      <data key="d3">28</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="18" target="31">
+      <data key="d2">transit</data>
+      <data key="d3">31</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="18" target="67">
+      <data key="d2">transit</data>
+      <data key="d3">67</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="19" target="21">
+      <data key="d2">transit</data>
+      <data key="d3">21</data>
+      <data key="d4">8</data>
+    </edge>
+    <edge source="19" target="56">
+      <data key="d2">transit</data>
+      <data key="d3">56</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="19" target="64">
+      <data key="d2">transit</data>
+      <data key="d3">64</data>
+      <data key="d4">2</data>
+    </edge>
+    <edge source="19" target="81">
+      <data key="d2">transit</data>
+      <data key="d3">81</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="19" target="82">
+      <data key="d2">transit</data>
+      <data key="d3">82</data>
+      <data key="d4">6</data>
+    </edge>
+    <edge source="19" target="83">
+      <data key="d2">transit</data>
+      <data key="d3">83</data>
+      <data key="d4">1</data>
+    </edge>
+    <edge source="19" target="85">
+      <data key="d2">transit</data>
+      <data key="d3">85</data>
+      <data key="d4">6</data>
+    </edge>
+    <edge source="19" target="87">
+      <data key="d2">transit</data>
+      <data key="d3">87</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="19" target="92">
+      <data key="d2">transit</data>
+      <data key="d3">92</data>
+      <data key="d4">4</data>
+    </edge>
+    <edge source="19" target="110">
+      <data key="d2">transit</data>
+      <data key="d3">110</data>
+      <data key="d4">5</data>
+    </edge>
+    <edge source="19" target="111">
+      <data key="d2">transit</data>
+      <data key="d3">111</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="19" target="113">
+      <data key="d2">transit</data>
+      <data key="d3">113</data>
+      <data key="d4">3</data>
+    </edge>
+    <edge source="19" target="126">
+      <data key="d2">transit</data>
+      <data key="d3">126</data>
+      <data key="d4">7</data>
+    </edge>
+    <edge source="21" target="108">
+      <data key="d2">transit</data>
+      <data key="d3">108</data>
+      <data key="d4">9</data>
+    </edge>
+    <edge source="21" target="114">
+      <data key="d2">transit</data>
+      <data key="d3">114</data>
+      <data key="d4">10</data>
+    </edge>
+    <edge source="21" target="22">
+      <data key="d2">peer</data>
+      <data key="d3">none</data>
+      <data key="d4">7</data>
+    </edge>
+  </graph>
+</graphml>
