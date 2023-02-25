@@ -690,7 +690,15 @@ class Simulation:
             for i in range(0, self.__peer_count):
                 optimal_processing_load[str(i)] = 0
 
+            processing_load = OrderedDict()
+            for i in range(0, self.__peer_count):
+                processing_load[str(i)] = 0
+
             for i in range(1, self.__op_count + 1):
+                if i % 100 == 0:
+                    random_id = str(r.randint(0, self.__network.size() - 1))
+                    self.__network.publish(self.__network.find_cluster_by_id('c' + random_id + '_l0'), obj)
+
                 logger.info("OPERATION {}".format(i))
                 logger.info("{}".format(obj.get_owner()))
                 owner = self.__network.find_cluster_by_id(obj.get_owner())
@@ -709,45 +717,80 @@ class Simulation:
                 res = self.__network.move(mover, obj)
                 res['msg'] = "MOVING FROM {} TO {}".format(str(owner.get_cluster_id()), str(mover.get_cluster_id()))
                 res['mover_id'] = str(mover.get_id())
+
+                # optimal processing load calculation
                 res['optimal_cost'] = nx.dijkstra_path_length(self.__network.get_graph(), mover.get_id(),
                                                               owner.get_id(), 'weight')
-                res['stretch'] = res['LB_SPIRAL_cost'] / res['optimal_cost']
-                logger.info("LB_SPIRAL COST IS {}".format(res['LB_SPIRAL_cost']))
+                optimal_path = nx.dijkstra_path(self.__network.get_graph(), mover.get_id(), owner.get_id())
+                for node in optimal_path:
+                    optimal_processing_load[str(node)] = optimal_processing_load[str(node)] + 1
+
+                res['stretch'] = res['cost'] / res['optimal_cost']
+
+                logger.info("COST IS {}".format(res['cost']))
                 logger.info("Optimal cost is {}".format(res['optimal_cost']))
                 logger.info("stretch is {}".format(res['stretch']))
                 logger.info(obj.get_owner())
 
                 optimal_processing_load[str(mover.get_id())] = optimal_processing_load[str(mover.get_id())] + 1
+                for i in range(0, self.__peer_count):
+                    processing_load[str(i)] = processing_load[str(i)] + res['processing_load'][str(i)]
+
                 results.append(res)
+
+            output = dict()
+
+            # temp totals
+            optimal_total = 0
+            processing_load_total = 0
+            for k, v in optimal_processing_load.items():
+                optimal_total = optimal_total + v
+            for k, v in processing_load.items():
+                processing_load_total = processing_load_total + v
+
+            output['op_total_temp'] = optimal_total
+            output['processing_load_total'] = processing_load_total
+
             logger.info("{}".format(results))
 
             # prepare the result
+            total_cost = 0
             total_cost_optimal = 0
-            total_cost_LB_SPIRAL = 0
+
+            total_stretch = 0
+
             total_communication_cost = 0
+
             total_hops_only = 0
-            stretch = 0
-            processing_load = OrderedDict()
-            for i in range(0, self.__peer_count):
-                processing_load[str(i)] = 0
+            total_t_hops_only = 0
 
             for result in results:
                 total_cost_optimal = total_cost_optimal + result['optimal_cost']
-                total_cost_LB_SPIRAL = total_cost_LB_SPIRAL + result['LB_SPIRAL_cost']
-                total_communication_cost = total_communication_cost + result['inform_cost_only']
-                total_hops_only = total_hops_only + result['hopsOnly']
-                stretch = stretch + result['stretch']
-                processing_load[result['mover_id']] = processing_load[result['mover_id']] + result['processing_load']
+                total_cost = total_cost + result['cost']
 
-            output = dict()
+                total_stretch = total_stretch + result['stretch']
+
+                total_communication_cost = total_communication_cost + result['inform_cost_only']
+                total_hops_only = total_hops_only + result['hops_only']
+                total_t_hops_only = total_t_hops_only + result['t_hops_only']
+
+                for i in range(0, self.__peer_count):
+                    processing_load[str(i)] = processing_load[str(i)] + result['processing_load'][str(i)]
+
+            # output = dict()
             output['results'] = results
-            output['total_optimal'] = total_cost_optimal
-            output['total_LB_SPIRAL'] = total_cost_LB_SPIRAL
-            output['stretch'] = stretch
-            output['processing_load'] = processing_load
-            output['optimal_processing_load'] = optimal_processing_load
-            output['total_inform_cost_only'] = total_communication_cost
-            output['total_hops_only'] = total_hops_only
+
+            output['COST_OPTIMAL'] = total_cost_optimal
+            output['COST'] = total_cost
+
+            output['STRETCH'] = total_stretch
+
+            output['PROCESSING_LOAD_OPTIMAL'] = optimal_processing_load
+            output['PROCESSING_LOAD'] = processing_load
+
+            output['INFORM_COST'] = total_communication_cost
+            output['HOPS'] = total_hops_only
+            output['TREE_HOPS'] = total_t_hops_only
             path = 'results'
 
             if not os.path.exists(path):
