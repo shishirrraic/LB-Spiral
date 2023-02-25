@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 import matplotlib.pyplot as plt
 import networkx as nx
 import log
@@ -235,14 +237,21 @@ class Network:
         assert res['intersection'] is not None
         assert res['path'] is not None
         assert res['hops'] is not None
+        assert res['t_hops'] is not None
 
         logger.debug('intersection at {}'.format(res['intersection']))
         logger.debug('intersection path at {}'.format(res['path']))
         logger.debug('hops count {}'.format(res['hops']))
+        logger.debug('tree hops count {}'.format(res['t_hops']))
 
         # inform the leader in each hop
         inform_cost = 0
+        processing_load = OrderedDict()
+        for i in range(0, self.__size):
+            processing_load[str(i)] = 0
 
+
+        # for calculating processing load, count the number of leafs in each tree in a non intermediate cluster
         for path in res['path']:
             logger.debug("PATH INSIDE INFORM COST CALCULATION IS {}".format(path))
             # if the mover node is not the leader in the cluster it should inform the cluster so calculate the
@@ -260,6 +269,12 @@ class Network:
                         'weight'
                     )
                     logger.debug("UPDATED INFORM COST {}".format(inform_cost))
+                    processing_load[self.find_cluster_by_id(path).get_leader()] = processing_load[self.find_cluster_by_id(path).get_leader()] + 1
+
+                    inform_path = nx.dijkstra_path(self.find_cluster_by_id(path).get_graph(), mover_id, self.find_cluster_by_id(path).get_leader())
+                    for node in inform_path:
+                        processing_load[str(node)] = processing_load[str(node)] + 1
+            processing_load[mover_id] = processing_load[mover_id] + 1
             self.find_cluster_by_id(path).set_leader(mover_id)
 
         logger.debug("INFORM COST IS {}".format(inform_cost))
@@ -270,10 +285,7 @@ class Network:
         index_to_delete_from = obj.get_path().index(res['intersection']) - 1
 
         cluster_to_delete_path_from = self.find_cluster_by_id(obj.get_path()[index_to_delete_from])
-        tmp_cluster = self.find_cluster_by_id(obj.get_path()[index_to_delete_from])
-        while tmp_cluster is not None:
-            logger.debug("{}".format(tmp_cluster.get_cluster_id()))
-            tmp_cluster = tmp_cluster.get_previous_cluster()
+
         delete_hop = 0
 
         while cluster_to_delete_path_from is not None:
@@ -282,11 +294,8 @@ class Network:
             cluster_to_delete_path_from = temp_cluster
             delete_hop = delete_hop + 1
 
-        tmp_cluster = self.find_cluster_by_id(obj.get_path()[index_to_delete_from])
-        while tmp_cluster is not None:
-            tmp_cluster = tmp_cluster.get_previous_cluster()
 
-        # check for prevuos cluster links, DELETE CHECK
+        # check for previous cluster links, DELETE CHECK
         for i in range(index_to_delete_from + 1):
             logger.debug("{}".format(self.find_cluster_by_id(obj.get_path()[i]).get_cluster_id()))
             assert self.find_cluster_by_id(obj.get_path()[i]).get_previous_cluster() is None
@@ -300,13 +309,6 @@ class Network:
                 self.find_cluster_by_id(res['path'][i]).set_previous_cluster(
                     self.find_cluster_by_id(res['path'][i + 1]))
 
-        # calculate the processing load
-        logger.debug("PROCESSING LOAD")
-        processing_load = 0
-        for j in range(0, len(res['path'])):
-            if mover_id in self.find_cluster_by_id(res['path'][j]).get_peers():
-                processing_load = processing_load + 1
-            logger.debug("{}".format(res['path'][j]))
 
         logger.debug("PROCESSING LOAD IS {}".format(processing_load))
         # change the ownership equivalent to moving the file
@@ -340,48 +342,57 @@ class Network:
             self.find_cluster_by_id(res['intersection']).get_graph(), mover_id, owner_id, 'weight')
         # res['LB_SPIRAL_cost'] = res['hops'] + res['delete_hops'] + res['shortest_path_length_in_intersected_cluster']
         # res['LB_SPIRAL_cost'] = res['hops'] + res['shortest_path_length_in_intersected_cluster'] + inform_cost
-        res['LB_SPIRAL_cost'] = res['hops'] + inform_cost * 2
+        # res['LB_SPIRAL_cost'] = res['hops'] + res['t_hops'] + inform_cost * 2
+        res['cost'] = res['hops'] + res['delete_hops'] + res['shortest_path_length_in_intersected_cluster']
         res['inform_cost_only'] = inform_cost * 2
-        res['hopsOnly'] = res['hops']
+        res['hops_only'] = res['hops']
+        res['t_hops_only'] = res['t_hops']
         res['shortest_path_length_in_intersected_cluster'] = res['shortest_path_length_in_intersected_cluster']
         res['processing_load'] = processing_load
         return res
 
     def find_intersection(self, cluster, obj, owner_id, mover_id):
-        logger.debug("OBJECTS PATH IS {}".format(obj.get_path()))
 
-        # keep track of level with i
         i = 1
         hops = 0
+        # tree hops
+        t_hops = 0
         level_clusters = self.clusters_by_level(i)
         level_cluster_size = len(self.clusters_by_level(i))
         new_path = []
         prev = cluster.get_cluster_id()
+
         prev_cluster = cluster
 
         new_path.append(prev)
-
         # last cluster to visit in the level
+
         intersection = False
         while 1:
             for cl_index in range(level_cluster_size):
-
                 if cluster.get_peers()[0] in level_clusters[cl_index].get_peers():
                     hops = hops + 1
                     level_clusters[cl_index].set_previous(prev)
                     prev = level_clusters[cl_index].get_cluster_id()
 
+                    # previous cluster not used
+                    # level_clusters[cl_index].set_previous_cluster(prev_cluster)
                     prev_cluster = level_clusters[cl_index]
+
                     new_path.append(level_clusters[cl_index].get_cluster_id())
+
+                    # the only peer in the cluster
+                    # set the leader after calculating communication cost from mover to the leader.
 
                     intersection = check_for_intersection(level_clusters[cl_index].get_cluster_id(), obj.get_path())
 
-                    if intersection is not None and owner_id in level_clusters[cl_index].get_graph().nodes and\
+                    if intersection is not None and owner_id in level_clusters[cl_index].get_graph().nodes and \
                             mover_id in level_clusters[cl_index].get_graph().nodes:
                         d = dict()
                         d['intersection'] = intersection
                         d['path'] = new_path
                         d['hops'] = hops
+                        d['t_hops'] = t_hops
                         return d
 
             i = i + 1
@@ -402,31 +413,31 @@ class Network:
                             while leaf.get_parent() is not None:
                                 # end when root is reached. Root has no parent
                                 if leaf.get_root_id() != leaf.get_parent().get_root_id():
-                                    hops = hops + 1
-
+                                    t_hops = t_hops + 1
                                     # set prev
                                     self.find_cluster_by_id(leaf.get_parent().get_root_id()).set_previous(prev)
                                     prev = self.find_cluster_by_id(leaf.get_parent().get_root_id()).get_cluster_id()
 
-                                    # set previous cluster
                                     prev_cluster = self.find_cluster_by_id(leaf.get_parent().get_root_id())
 
+                                    # note no intersection at intermediate levels in the tree
                                     new_path.append(leaf.get_parent().get_root_id())
 
                                 leaf = leaf.get_parent()
                                 if leaf.get_parent() is None:
+
                                     if i == self.__height_of_clusters:
                                         self.__root_cluster_id = leaf.get_root_id()
 
                                         intersection = check_for_intersection(leaf.get_root_id(), obj.get_path())
-                                        if intersection is not None and owner_id in self.find_cluster_by_id(
-                                                leaf.get_root_id()).get_graph().nodes and mover_id in self.find_cluster_by_id(
-                                            leaf.get_root_id()).get_graph().nodes:
+                                        if intersection is not None and \
+                                                owner_id in self.find_cluster_by_id(leaf.get_root_id()).get_graph().nodes \
+                                                and mover_id in self.find_cluster_by_id(leaf.get_root_id()).get_graph().nodes:
                                             d = dict()
                                             d['intersection'] = intersection
                                             d['path'] = new_path
                                             d['hops'] = hops
-                                            logger.debug("FOUND AND RETURNING ROOT")
+                                            d['t_hops'] = t_hops
                                             return d
                                         break
                                     # found the root
@@ -436,6 +447,8 @@ class Network:
                                     self.find_cluster_by_id(leaf.get_root_id()).set_previous(prev)
                                     prev = self.find_cluster_by_id(leaf.get_root_id()).get_cluster_id()
 
+                                    # set the leader after calculating communication cost from mover to the leader.
+
                                     intersection = check_for_intersection(leaf.get_root_id(), obj.get_path())
                                     if intersection is not None and owner_id in self.find_cluster_by_id(
                                             leaf.get_root_id()).get_graph().nodes and \
@@ -444,6 +457,7 @@ class Network:
                                         d['intersection'] = intersection
                                         d['path'] = new_path
                                         d['hops'] = hops
+                                        d['t_hops'] = t_hops
                                         return d
                             break
                     if level_leaf_found:
@@ -458,28 +472,24 @@ class Network:
                         level_clusters[inner_cl_index].set_previous(prev)
                         prev = level_clusters[inner_cl_index].get_cluster_id()
 
-                        # level_clusters[inner_cl_index].set_previous_cluster(prev_cluster)
                         prev_cluster = level_clusters[inner_cl_index]
 
                         new_path.append(level_clusters[inner_cl_index].get_cluster_id())
 
                         intersection = check_for_intersection(level_clusters[inner_cl_index].get_cluster_id(),
                                                               obj.get_path())
-                        if intersection is not None and owner_id in level_clusters[inner_cl_index].get_graph().nodes and \
+                        if intersection is not None and \
+                                owner_id in level_clusters[inner_cl_index].get_graph().nodes and \
                                 mover_id in level_clusters[inner_cl_index].get_graph().nodes:
                             d = dict()
                             d['intersection'] = intersection
                             d['path'] = new_path
                             d['hops'] = hops
+                            d['t_hops'] = t_hops
                             return d
 
                 i = i + 1
 
-            # No match found until root, so intersection is at root
-            logger.debug("FINAL PATH IS {}".format(new_path))
-            logger.debug("{}".format(self.find_cluster_by_id(self.__root_cluster_id).get_peers()))
-            logger.debug("{}".format(cluster.get_cluster_id()))
-            logger.debug("INTERSECTION {}".format(intersection))
             # cluster.get_object().set_path(new_path)
 
             obj.set_path(new_path)
@@ -487,7 +497,7 @@ class Network:
             d['intersection'] = intersection
             d['path'] = new_path
             d['hops'] = hops
-            logger.debug("HOPS TOTAL MOVE = {}".format(hops))
+            d['t_hops'] = t_hops
             return d
 
 
