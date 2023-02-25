@@ -92,6 +92,9 @@ class Simulation:
             # load network
             self.load_network('./graphs/' + graph_input + '_network')
 
+    def get_network(self):
+        return self.__network
+
     def setup_peers(self, graph):
         for n in graph.nodes():
             neighbors = {}
@@ -297,7 +300,7 @@ class Simulation:
             paths = nx.single_source_dijkstra_path_length(graph, n, 0, weight='weight')
             logger.debug("{}".format(paths))
             cluster_graph = graph.subgraph([n])
-            cluster = Cluster('c' + str(n) + '_l' + '0', cluster_graph, 0, str(n))
+            cluster = Cluster('c' + str(n) + '_l' + '0', cluster_graph, 0)
             self.__network.add_cluster(0, cluster)
             # self._network.draw_cluster(cluster.cluster_id)
 

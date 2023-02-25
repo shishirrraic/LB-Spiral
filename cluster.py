@@ -1,5 +1,6 @@
 import networkx as nx
 import log
+import random
 
 logger = log.get_logger(__name__)
 
@@ -48,8 +49,12 @@ class Cluster:
             logger.debug("SETTING LEADER {} FOR CLUSTER {}".format(leader_id, self.__cluster_id))
             self.__leader_id = leader_id
         else:
-            self.__leader_id = self.__id
-
+            if len(graph.nodes) == 1:
+                self.__leader_id = self.__id
+            else:
+                # set an arbitrary leader
+                r = random.Random()
+                self.__leader_id = str(nodes[r.randint(0, len(nodes) - 1)])
         self.__root = False
         self.__previous = None
         self.__previous_cluster = None
