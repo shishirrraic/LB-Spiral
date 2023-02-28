@@ -219,7 +219,7 @@ class Network:
                     prev_cluster = level_clusters[inner_cl_index]
 
                     # make leader, the only peer in the cluster
-                    level_clusters[cl_index].set_leader(peer_id)
+                    level_clusters[inner_cl_index].set_leader(peer_id)
             i = i + 1
 
         logger.info("FINAL PATH {}".format(path))
