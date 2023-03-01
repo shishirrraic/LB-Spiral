@@ -340,15 +340,9 @@ class Network:
         res['delete_hops'] = delete_hop
         res['shortest_path_length_in_intersected_cluster'] = nx.dijkstra_path_length(
             self.find_cluster_by_id(res['intersection']).get_graph(), mover_id, owner_id, 'weight')
-        # res['LB_SPIRAL_cost'] = res['hops'] + res['delete_hops'] + res['shortest_path_length_in_intersected_cluster']
-        # res['LB_SPIRAL_cost'] = res['hops'] + res['shortest_path_length_in_intersected_cluster'] + inform_cost
-        # res['LB_SPIRAL_cost'] = res['hops'] + res['t_hops'] + inform_cost * 2
-        res['cost'] = res['hops'] + res['delete_hops'] + res['shortest_path_length_in_intersected_cluster']
-        res['inform_cost_only'] = inform_cost * 2
-        res['overall_cost'] = res['hops'] + res['delete_hops'] + res['shortest_path_length_in_intersected_cluster'] + inform_cost * 2
+        res['total_cost'] = res['hops'] + res['delete_hops'] + res['shortest_path_length_in_intersected_cluster']
         res['hops_only'] = res['hops']
         res['t_hops_only'] = res['t_hops']
-        res['shortest_path_length_in_intersected_cluster'] = res['shortest_path_length_in_intersected_cluster']
         res['processing_load'] = processing_load
         return res
 
