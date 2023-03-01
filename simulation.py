@@ -733,9 +733,9 @@ class Simulation:
                 for node in optimal_path:
                     optimal_processing_load[str(node)] = optimal_processing_load[str(node)] + 1
 
-                res['stretch'] = res['cost'] / res['optimal_cost']
+                res['stretch'] = res['total_cost'] / res['optimal_cost']
 
-                logger.info("COST IS {}".format(res['cost']))
+                logger.info("COST IS {}".format(res['total_cost']))
                 logger.info("Optimal cost is {}".format(res['optimal_cost']))
                 logger.info("stretch is {}".format(res['stretch']))
                 logger.info(obj.get_owner())
@@ -748,55 +748,40 @@ class Simulation:
 
             output = dict()
 
-            # temp totals
-            optimal_total = 0
-            processing_load_total = 0
-            for k, v in optimal_processing_load.items():
-                optimal_total = optimal_total + v
-            for k, v in processing_load.items():
-                processing_load_total = processing_load_total + v
-
-            output['op_total_temp'] = optimal_total
-            output['processing_load_total'] = processing_load_total
-
             logger.info("{}".format(results))
 
             # prepare the result
             total_cost = 0
             total_cost_optimal = 0
-
+            total_cost_without_inform = 0
+            total_inform_cost = 0
             total_stretch = 0
-
-            total_communication_cost = 0
 
             total_hops_only = 0
             total_t_hops_only = 0
 
             for result in results:
                 total_cost_optimal = total_cost_optimal + result['optimal_cost']
-                total_cost = total_cost + result['cost']
-
+                total_cost = total_cost + result['total_cost']
+                total_cost_without_inform = total_cost_without_inform + result['cost']
                 total_stretch = total_stretch + result['stretch']
-
-                total_communication_cost = total_communication_cost + result['inform_cost_only']
+                total_inform_cost = total_inform_cost + result['inform_cost_only']
                 total_hops_only = total_hops_only + result['hops_only']
                 total_t_hops_only = total_t_hops_only + result['t_hops_only']
-
-                for i in range(0, self.__peer_count):
-                    processing_load[str(i)] = processing_load[str(i)] + result['processing_load'][str(i)]
 
             # output = dict()
             output['results'] = results
 
             output['COST_OPTIMAL'] = total_cost_optimal
             output['COST'] = total_cost
-
+            output['COST_WITHOUT_INFORM'] = total_cost_without_inform
+            output['COST_INFORM_ONLY'] = total_inform_cost
             output['STRETCH'] = total_stretch
 
             output['PROCESSING_LOAD_OPTIMAL'] = optimal_processing_load
             output['PROCESSING_LOAD'] = processing_load
 
-            output['INFORM_COST'] = total_communication_cost
+            output['INFORM_COST'] = total_inform_cost
             output['HOPS'] = total_hops_only
             output['TREE_HOPS'] = total_t_hops_only
             path = 'results'
