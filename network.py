@@ -63,8 +63,6 @@ class Network:
         return self.__clusters[cluster_id]
 
     def clusters_by_level(self, level):
-        logger.info("LEVEL IS {}".format(level))
-        logger.info("CLUSTERS IN LEVEL IS {}".format(self.__clusters[level]))
         return [a for a in self.__clusters[level] if not a.intermediate()]
 
     def find_cluster_by_id(self, cluster_id):
