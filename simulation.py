@@ -316,10 +316,14 @@ class Simulation:
             logger.debug('THE DISTANCE LIMIT IS {}'.format(distance))
             clusterize = {}
 
-            n = 0
+            # changing n to build a more randomized cluster
+            node_index = 0
+            node_list = random.sample(range(0, self.__peer_count), self.__peer_count)
+
             #     iterate over the peers once
-            while n < self.__peer_count:
-                logger.debug('CLUSTERING PEER {}'.format(n))
+            while node_index < self.__peer_count:
+                n = node_list[node_index]
+                logger.info('CLUSTERING PEER {}'.format(n))
 
                 paths_found = nx.single_source_dijkstra_path_length(graph, str(n), distance, weight='weight')
 
@@ -354,7 +358,7 @@ class Simulation:
                         clustered_peers_list.extend(tmp_peers_list_to_cluster)
                         clusterize[c_id] = peers_to_cluster
 
-                n += 1
+                node_index += 1
 
             logger.debug("CHECKING MEMBERSHIP")
             logger.debug("{}".format(self.at_least_one(Counter(clustered_peers_list)) < 0))
@@ -364,7 +368,7 @@ class Simulation:
             # if not built yet build a cluster and remove peers who appear more than logn times
             missing_cluster_id = self.at_least_one(Counter(clustered_peers_list))
             while missing_cluster_id > -1:
-                logger.debug("PEER {} IS MISSING, BUILDING A CLUSTER AROUND IT.".format(missing_cluster_id))
+                logger.info("PEER {} IS MISSING, BUILDING A CLUSTER AROUND IT.".format(missing_cluster_id))
                 paths_found = nx.single_source_dijkstra_path_length(graph, str(missing_cluster_id), distance,
                                                                     weight='weight')
                 peers_to_cluster = []
@@ -410,7 +414,7 @@ class Simulation:
                         # removing
                         logger.debug("% APPEARS IN MORE THAN LOGN CLUSTER, REMOVING IT", excess_cluster_id)
                         excess_cluster_id = self.at_most_logn(Counter(tmp_clustered_peers_list))
-                    logger.debug("PREPARING THE CLUSTER FROM MODIFIED PEERS LIST {}".format(tmp_peers_list_to_cluster))
+                    logger.info("PREPARING THE CLUSTER FROM MODIFIED PEERS LIST {}".format(tmp_peers_list_to_cluster))
                     clustered_peers_list.extend(tmp_peers_list_to_cluster)
                     clusterize[c_id] = tmp_peers_list_to_cluster
                     assert (self.at_most_logn(Counter(clustered_peers_list)) < 0)
@@ -420,10 +424,10 @@ class Simulation:
             assert (self.at_least_one(Counter(clustered_peers_list)) < 0)
             assert (self.at_most_logn(Counter(clustered_peers_list)) < 0)
 
-            logger.debug("{}".format(clusterize))
-            logger.debug("{}".format(Counter(clustered_peers_list)))
+            logger.info("{}".format(clusterize))
+            logger.info("{}".format(Counter(clustered_peers_list)))
 
-            logger.debug("FINALLY ADDING CLUSTERS")
+            logger.info("FINALLY ADDING CLUSTERS")
             for key in clusterize:
                 assert (nx.number_of_nodes(graph.subgraph([str(i) for i in clusterize[key]])) == len(clusterize[key]))
 
@@ -435,7 +439,7 @@ class Simulation:
                 self.__network.add_cluster(i + 1, cluster)
                 # self._network.draw_cluster(cluster.cluster_id)
 
-            logger.debug("CLUSTERIZE {}".format(clusterize))
+            logger.info("CLUSTERIZE {}".format(clusterize))
 
         return
 
