@@ -219,7 +219,7 @@ class Network:
                     prev_cluster = level_clusters[inner_cl_index]
 
                     # make leader, the only peer in the cluster
-                    # level_clusters[cl_index].set_leader(peer_id)
+                    # level_clusters[inner_cl_index].set_leader(peer_id)
             i = i + 1
 
         logger.info("FINAL PATH {}".format(path))
@@ -274,7 +274,7 @@ class Network:
                     inform_path = nx.dijkstra_path(self.find_cluster_by_id(path).get_graph(), mover_id, self.find_cluster_by_id(path).get_leader())
                     for node in inform_path:
                         processing_load[str(node)] = processing_load[str(node)] + 1
-            processing_load[mover_id] = processing_load[mover_id] + 1
+            # processing_load[mover_id] = processing_load[mover_id] + 1
             # self.find_cluster_by_id(path).set_leader(mover_id)
 
         logger.debug("INFORM COST IS {}".format(inform_cost))
@@ -289,6 +289,8 @@ class Network:
         delete_hop = 0
 
         while cluster_to_delete_path_from is not None:
+            if not cluster_to_delete_path_from.intermediate():
+                processing_load[cluster_to_delete_path_from.get_leader()] = processing_load[cluster_to_delete_path_from.get_leader()] + 1
             temp_cluster = cluster_to_delete_path_from.get_previous_cluster()
             cluster_to_delete_path_from.set_previous_cluster(None)
             cluster_to_delete_path_from = temp_cluster
@@ -345,6 +347,7 @@ class Network:
         # res['LB_SPIRAL_cost'] = res['hops'] + res['t_hops'] + inform_cost * 2
         res['cost'] = res['hops'] + res['delete_hops'] + res['shortest_path_length_in_intersected_cluster']
         res['inform_cost_only'] = inform_cost * 2
+        res['overall_cost'] = res['hops'] + res['delete_hops'] + res['shortest_path_length_in_intersected_cluster'] + inform_cost * 2
         res['hops_only'] = res['hops']
         res['t_hops_only'] = res['t_hops']
         res['shortest_path_length_in_intersected_cluster'] = res['shortest_path_length_in_intersected_cluster']
