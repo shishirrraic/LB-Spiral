@@ -289,6 +289,7 @@ class Network:
         delete_hop = 0
 
         while cluster_to_delete_path_from is not None:
+            processing_load[cluster_to_delete_path_from.get_leader()] = processing_load[cluster_to_delete_path_from.get_leader()] + 1
             temp_cluster = cluster_to_delete_path_from.get_previous_cluster()
             cluster_to_delete_path_from.set_previous_cluster(None)
             cluster_to_delete_path_from = temp_cluster
@@ -345,6 +346,7 @@ class Network:
         # res['LB_SPIRAL_cost'] = res['hops'] + res['t_hops'] + inform_cost * 2
         res['cost'] = res['hops'] + res['delete_hops'] + res['shortest_path_length_in_intersected_cluster']
         res['inform_cost_only'] = inform_cost * 2
+        res['overall_cost'] = res['hops'] + res['delete_hops'] + res['shortest_path_length_in_intersected_cluster'] + inform_cost * 2
         res['hops_only'] = res['hops']
         res['t_hops_only'] = res['t_hops']
         res['shortest_path_length_in_intersected_cluster'] = res['shortest_path_length_in_intersected_cluster']
