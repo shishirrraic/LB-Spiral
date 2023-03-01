@@ -685,14 +685,17 @@ class Simulation:
 
         # simulations to run
         # initial publisher and object
+        # r.seed(rnd)
         for rnd in range(0, rounds):
-            publisher = self.__network.find_cluster_by_id('c0_l0')
+            r = random.Random()
+            r.seed(rnd)
+            random_id = str(r.randint(0, self.__network.size() - 1))
+            publisher = self.__network.find_cluster_by_id('c' + random_id + '_l0')
             obj = Object('obj1', publisher.get_cluster_id())
 
             self.__network.publish(publisher, obj)
             results = []
-            r = random.Random()
-            r.seed("test" + str(rnd))
+
             # r.seed("test")
 
             optimal_processing_load = OrderedDict()
@@ -704,10 +707,6 @@ class Simulation:
                 processing_load[str(i)] = 0
 
             for i in range(1, self.__op_count + 1):
-                if i % 100 == 0:
-                    random_id = str(r.randint(0, self.__network.size() - 1))
-                    self.__network.publish(self.__network.find_cluster_by_id('c' + random_id + '_l0'), obj)
-
                 logger.info("OPERATION {}".format(i))
                 logger.info("{}".format(obj.get_owner()))
                 owner = self.__network.find_cluster_by_id(obj.get_owner())
