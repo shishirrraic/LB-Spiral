@@ -296,13 +296,18 @@ class Simulation:
         self.__network.add_cluster_level(0)
 
         # level 0 clusters
-        for n in graph.nodes():
+        node_index = 0
+        node_list = random.sample(range(0, self.__peer_count), self.__peer_count)
+        while node_index < self.__peer_count:
+        # for n in graph.nodes():
+            n = str(node_list[node_index])
             paths = nx.single_source_dijkstra_path_length(graph, n, 0, weight='weight')
             logger.debug("{}".format(paths))
             cluster_graph = graph.subgraph([n])
             cluster = Cluster('c' + str(n) + '_l' + '0', cluster_graph, 0)
             self.__network.add_cluster(0, cluster)
             # self._network.draw_cluster(cluster.cluster_id)
+            node_index += 1
 
         # form upper level clusters
         for i in range(int(height_of_cluster)):
