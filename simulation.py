@@ -790,8 +790,8 @@ class Simulation:
                 os.makedirs(path)
 
             file = open(
-                os.path.join(path, str(self.__op_count) + '-Operations__' + str(self.__peer_count) + '-Peers' + str(
-                    rnd) + '.txt'), 'w'
+                os.path.join(path, 'SPIRAL_O' + str(self.__op_count) + '_P' + str(self.__peer_count) + '_R' + str(
+                    rnd) + '.json'), 'w'
             )
 
             json.dump(output, file)
