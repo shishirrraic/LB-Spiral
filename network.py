@@ -260,6 +260,7 @@ class Network:
             if not self.find_cluster_by_id(path).intermediate():
                 if mover_id == self.find_cluster_by_id(path).get_leader():
                     logger.debug("SAME")
+                    processing_load[str(mover_id)] = processing_load[str(mover_id)] + 1
                 else:
                     inform_cost = inform_cost + nx.dijkstra_path_length(
                         self.find_cluster_by_id(path).get_graph(),
