@@ -94,7 +94,7 @@ for type in json_result:
                 dataframe_map_communication_cost[node_count][op_count] = {}
 
 # todo change reps to a variable
-reps = 5
+reps = 1
 
 
 processing_load_result = {}
@@ -189,26 +189,29 @@ with ExcelWriter('output.xlsx') as writer:
                     worksheet.write_formula(2 + x,
                                             col_char + reps + 2,
                                             '=AVERAGE(' + get_string(65 + col_char + 3) + str(
-                                                x + 2) + ':' + get_string(65 + col_char + 3 + reps - 1) + str(
-                                                x + 2) + ')')
+                                                x + 3) + ':' + get_string(65 + col_char + 3 + reps - 1) + str(
+                                                x + 3) + ')')
                 df.to_excel(writer, sheet_name=sheet_name, startrow=startrow, startcol=col_char)
 
                 col_char += reps + 5
-            worksheet.write_formula(1, col_char + 2, '=(' + get_string(65 + reps + 3) + str(1) + ')')
-            worksheet.write_formula(1, col_char + 3, '=(' + get_string(65 + (reps + 3) * 2 + 2) + str(1) + ')')
-            worksheet.write_formula(1, col_char + 4, '=(' + get_string(65 + (reps + 3) * 3 + 2 + 2) + str(1) + ')')
+            worksheet.write_formula(1, col_char + 2,
+                                    '=(' + get_string(65 + reps + 3) + str(1) + ')')
+            worksheet.write_formula(1, col_char + 3,
+                                    '=(' + get_string(65 + (reps + 3) * 2 + 2) + str(1) + ')')
+            worksheet.write_formula(1, col_char + 4,
+                                    '=(' + get_string(65 + (reps + 3) * 3 + 2 + 2) + str(1) + ')')
             for x in range(0, int(node_count)):
                 worksheet.write_formula(2 + x,
                                         col_char + 2,
-                                        '=(' + get_string(65 + reps + 3) + str(x + 2) + ')')
+                                        '=(' + get_string(65 + reps + 3) + str(x + 3) + ')')
 
                 worksheet.write_formula(2 + x,
                                         col_char + 3,
-                                        '=(' + get_string(65 + (reps + 3) * 2 + 2) + str(x + 2) + ')')
+                                        '=(' + get_string(65 + (reps + 3) * 2 + 2) + str(x + 3) + ')')
 
                 worksheet.write_formula(2 + x,
                                         col_char + 4,
-                                        '=(' + get_string(65 + (reps + 3) * 3 + 2 + 2) + str(x + 2) + ')')
+                                        '=(' + get_string(65 + (reps + 3) * 3 + 2 + 2) + str(x + 3) + ')')
 
     # write communication cost
     sheet_name = "Communication cost"
