@@ -267,12 +267,11 @@ class Network:
                         'weight'
                     )
                     logger.debug("UPDATED INFORM COST {}".format(inform_cost))
-                    processing_load[self.find_cluster_by_id(path).get_leader()] = processing_load[self.find_cluster_by_id(path).get_leader()] + 1
-
                     inform_path = nx.dijkstra_path(self.find_cluster_by_id(path).get_graph(), mover_id, self.find_cluster_by_id(path).get_leader())
                     for node in inform_path:
                         processing_load[str(node)] = processing_load[str(node)] + 1
-            processing_load[mover_id] = processing_load[mover_id] + 1
+            else:
+                processing_load[mover_id] = processing_load[mover_id] + 1
             self.find_cluster_by_id(path).set_leader(mover_id)
 
         logger.debug("INFORM COST IS {}".format(inform_cost))
