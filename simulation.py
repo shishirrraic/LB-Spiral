@@ -730,6 +730,7 @@ class Simulation:
                 res['optimal_cost'] = nx.dijkstra_path_length(self.__network.get_graph(), mover.get_id(),
                                                               owner.get_id(), 'weight')
                 optimal_path = nx.dijkstra_path(self.__network.get_graph(), mover.get_id(), owner.get_id())
+                logger.debug("THE OPTIMAL PATH {}".format(optimal_path))
                 for node in optimal_path:
                     optimal_processing_load[str(node)] = optimal_processing_load[str(node)] + 1
 
@@ -740,7 +741,6 @@ class Simulation:
                 logger.info("stretch is {}".format(res['stretch']))
                 logger.info(obj.get_owner())
 
-                optimal_processing_load[str(mover.get_id())] = optimal_processing_load[str(mover.get_id())] + 1
                 for i in range(0, self.__peer_count):
                     processing_load[str(i)] = processing_load[str(i)] + res['processing_load'][str(i)]
 
