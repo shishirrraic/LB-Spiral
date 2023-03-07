@@ -227,7 +227,7 @@ class Network:
         return path
 
     def move(self, cluster, obj):
-        logger.debug("THE MOVE SPIRAL ORIGINAL PATH IS {}".format(obj.get_path()))
+        logger.debug("THE ORIGINAL PATH IS {}".format(obj.get_path()))
 
         owner_id = self.find_cluster_by_id(obj.get_owner()).get_id()
         mover_id = self.find_cluster_by_id(cluster.get_cluster_id()).get_id()
@@ -267,7 +267,6 @@ class Network:
                         'weight'
                     )
                     logger.debug("UPDATED INFORM COST {}".format(inform_cost))
-                    processing_load[self.find_cluster_by_id(path).get_leader()] = processing_load[self.find_cluster_by_id(path).get_leader()] + 1
 
                     inform_path = nx.dijkstra_path(self.find_cluster_by_id(path).get_graph(), mover_id, self.find_cluster_by_id(path).get_leader())
                     for node in inform_path:
