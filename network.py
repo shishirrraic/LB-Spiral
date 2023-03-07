@@ -251,6 +251,7 @@ class Network:
 
         # for calculating processing load, count the number of leafs in each tree in a non intermediate cluster
         for path in res['path']:
+            logger.debug("LEADER BEFORE: {}".format(self.find_cluster_by_id(path).get_leader()))
             logger.debug("PATH INSIDE INFORM COST CALCULATION IS {}".format(path))
             # if the mover node is not the leader in the cluster it should inform the cluster so calculate the
             # distance form the node to the leader.
@@ -271,8 +272,8 @@ class Network:
                     inform_path = nx.dijkstra_path(self.find_cluster_by_id(path).get_graph(), mover_id, self.find_cluster_by_id(path).get_leader())
                     for node in inform_path:
                         processing_load[str(node)] = processing_load[str(node)] + 1
-            # processing_load[mover_id] = processing_load[mover_id] + 1
-            # self.find_cluster_by_id(path).set_leader(mover_id)
+
+            logger.debug("LEADER AFTER: {}".format(self.find_cluster_by_id(path).get_leader()))
 
         logger.debug("INFORM COST IS {}".format(inform_cost))
 
