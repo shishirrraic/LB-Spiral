@@ -341,8 +341,6 @@ class Network:
         res['delete_hops'] = delete_hop
         res['shortest_path_length_in_intersected_cluster'] = shortest_path_in_intersected_cluster
         res['total_cost'] = res['hops'] + res['delete_hops'] + shortest_path_in_intersected_cluster
-        res['hops_only'] = res['hops']
-        res['t_hops_only'] = res['t_hops']
         res['processing_load'] = processing_load
         return res
 
