@@ -763,7 +763,6 @@ class Simulation:
             for result in results:
                 total_cost_optimal = total_cost_optimal + result['optimal_cost']
                 total_cost = total_cost + result['total_cost']
-                total_cost_without_inform = total_cost_without_inform + result['cost']
                 total_stretch = total_stretch + result['stretch']
                 total_inform_cost = total_inform_cost + result['inform_cost_only']
                 total_hops_only = total_hops_only + result['hops_only']
