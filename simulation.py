@@ -757,17 +757,16 @@ class Simulation:
             total_inform_cost = 0
             total_stretch = 0
 
-            total_hops_only = 0
-            total_t_hops_only = 0
+            total_hops = 0
+            total_t_hops = 0
 
             for result in results:
                 total_cost_optimal = total_cost_optimal + result['optimal_cost']
                 total_cost = total_cost + result['total_cost']
                 total_stretch = total_stretch + result['stretch']
-                total_inform_cost = total_inform_cost + result['inform_cost_only']
-                total_hops_only = total_hops_only + result['hops_only']
-                total_t_hops_only = total_t_hops_only + result['t_hops_only']
                 total_inform_cost = total_inform_cost + result['inform_cost']
+                total_hops = total_hops + result['hops']
+                total_t_hops = total_t_hops + result['t_hops']
 
             # output = dict()
             output['results'] = results
@@ -775,15 +774,15 @@ class Simulation:
             output['COST_OPTIMAL'] = total_cost_optimal
             output['COST'] = total_cost
             output['COST_WITHOUT_INFORM'] = total_cost_without_inform
-            output['COST_INFORM_ONLY'] = total_inform_cost
+            output['COST_INFORM'] = total_inform_cost
             output['STRETCH'] = total_stretch
 
             output['PROCESSING_LOAD_OPTIMAL'] = optimal_processing_load
             output['PROCESSING_LOAD'] = processing_load
 
             output['INFORM_COST'] = total_inform_cost
-            output['HOPS'] = total_hops_only
-            output['TREE_HOPS'] = total_t_hops_only
+            output['HOPS'] = total_hops
+            output['TREE_HOPS'] = total_t_hops
             path = 'results'
 
             if not os.path.exists(path):
