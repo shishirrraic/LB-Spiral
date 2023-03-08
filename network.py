@@ -268,7 +268,7 @@ class Network:
                         'weight'
                     )
                     logger.debug("UPDATED INFORM COST {}".format(inform_cost))
-            processing_load[mover_id] = processing_load[mover_id] + 1
+                processing_load[mover_id] = processing_load[mover_id] + 1
             self.find_cluster_by_id(path).set_leader(mover_id)
             logger.debug("LEADER AFTER: {}".format(self.find_cluster_by_id(path).get_leader()))
 
@@ -284,7 +284,8 @@ class Network:
         delete_hop = 0
 
         while cluster_to_delete_path_from is not None:
-            processing_load[cluster_to_delete_path_from.get_leader()] = processing_load[cluster_to_delete_path_from.get_leader()] + 1
+            if not cluster_to_delete_path_from.intermediate():
+                processing_load[cluster_to_delete_path_from.get_leader()] = processing_load[cluster_to_delete_path_from.get_leader()] + 1
             delete_hop = delete_hop + 1
             temp_cluster = cluster_to_delete_path_from.get_previous_cluster()
             cluster_to_delete_path_from.set_previous_cluster(None)
