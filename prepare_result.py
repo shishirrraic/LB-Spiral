@@ -158,8 +158,8 @@ for type in json_result:
 
                     dataframe_map_communication_cost[node_count][op_count].setdefault('LB_SPIRAL_COST_WITHOUT_INFORM', []).append(
                         res['COST_WITHOUT_INFORM'])
-                    dataframe_map_communication_cost[node_count][op_count].setdefault('LB_SPRIAL_COST_INFORM_ONLY',[]).append(
-                        res['COST_INFORM_ONLY'])
+                    dataframe_map_communication_cost[node_count][op_count].setdefault('LB_SPRIAL_COST_INFORM',[]).append(
+                        res['COST_INFORM'])
                     dataframe_map_communication_cost[node_count][op_count].setdefault('LB_SPRIAL_COST',[]).append(
                         res['COST'])
                 elif type == "SPIRAL":
