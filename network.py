@@ -339,7 +339,6 @@ class Network:
         logger.debug("MOVE DONE")
 
         res['delete_hops'] = delete_hop
-        res['inform_cost'] = inform_cost
         res['shortest_path_length_in_intersected_cluster'] = shortest_path_in_intersected_cluster
         res['total_cost'] = res['hops'] + res['delete_hops'] + shortest_path_in_intersected_cluster
         res['hops_only'] = res['hops']

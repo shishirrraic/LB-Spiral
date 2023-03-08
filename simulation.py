@@ -758,7 +758,6 @@ class Simulation:
 
             total_hops_only = 0
             total_t_hops_only = 0
-            total_inform_cost = 0
 
             for result in results:
                 total_cost_optimal = total_cost_optimal + result['optimal_cost']
@@ -766,7 +765,6 @@ class Simulation:
                 total_stretch = total_stretch + result['stretch']
                 total_hops_only = total_hops_only + result['hops_only']
                 total_t_hops_only = total_t_hops_only + result['t_hops_only']
-                total_inform_cost = total_inform_cost + result['inform_cost']
 
             # output = dict()
             output['results'] = results
