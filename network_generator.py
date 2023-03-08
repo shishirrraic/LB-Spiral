@@ -4,6 +4,7 @@ import math
 from random import randint
 import networkx as nx
 import matplotlib.pyplot as plt
+import random
 from networkx.readwrite import json_graph
 
 num_nodes = 64
@@ -66,6 +67,9 @@ def build_random_graph():
 
 def build_internet_graph():
     internet_graph = nx.random_internet_as_graph(num_nodes)
+    # create a random mapping old label -> new label
+    node_mapping = dict(zip(internet_graph.nodes(), sorted(internet_graph.nodes(), key=lambda k: random.random())))
+    internet_graph = nx.relabel_nodes(internet_graph, node_mapping)
     add_edge_weights(internet_graph)
 
     assert nx.is_connected(internet_graph)
@@ -89,6 +93,7 @@ def build_graphs():
     # draw(random_graph)
 
     internet_graph = build_internet_graph()
+    # draw(internet_graph)
     write_to_a_file(internet_graph, "internet")
     # draw(internet_graph)
 
