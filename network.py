@@ -289,10 +289,10 @@ class Network:
         while cluster_to_delete_path_from is not None:
             if not cluster_to_delete_path_from.intermediate():
                 processing_load[cluster_to_delete_path_from.get_leader()] = processing_load[cluster_to_delete_path_from.get_leader()] + 1
+                delete_hop = delete_hop + 1
             temp_cluster = cluster_to_delete_path_from.get_previous_cluster()
             cluster_to_delete_path_from.set_previous_cluster(None)
             cluster_to_delete_path_from = temp_cluster
-            delete_hop = delete_hop + 1
 
 
         # check for previous cluster links, DELETE CHECK
@@ -311,6 +311,7 @@ class Network:
 
 
         logger.debug("PROCESSING LOAD IS {}".format(processing_load))
+        shortest_path_in_intersected_cluster = nx.dijkstra_path_length(self.find_cluster_by_id(res['intersection']).get_graph(), mover_id, owner_id, 'weight')
         # change the ownership equivalent to moving the file
         obj.set_owner(cluster.get_cluster_id())
 
@@ -338,9 +339,9 @@ class Network:
         logger.debug("MOVE DONE")
 
         res['delete_hops'] = delete_hop
-        res['shortest_path_length_in_intersected_cluster'] = nx.dijkstra_path_length(
-            self.find_cluster_by_id(res['intersection']).get_graph(), mover_id, owner_id, 'weight')
-        res['total_cost'] = res['hops'] + res['delete_hops'] + res['shortest_path_length_in_intersected_cluster']
+        res['inform_cost'] = inform_cost
+        res['shortest_path_length_in_intersected_cluster'] = shortest_path_in_intersected_cluster
+        res['total_cost'] = res['hops'] + res['delete_hops'] + shortest_path_in_intersected_cluster
         res['hops_only'] = res['hops']
         res['t_hops_only'] = res['t_hops']
         res['processing_load'] = processing_load
