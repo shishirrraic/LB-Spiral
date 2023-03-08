@@ -768,6 +768,7 @@ class Simulation:
                 total_inform_cost = total_inform_cost + result['inform_cost_only']
                 total_hops_only = total_hops_only + result['hops_only']
                 total_t_hops_only = total_t_hops_only + result['t_hops_only']
+                total_inform_cost = total_inform_cost + result['inform_cost']
 
             # output = dict()
             output['results'] = results
