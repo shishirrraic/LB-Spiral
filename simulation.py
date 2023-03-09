@@ -770,7 +770,7 @@ class Simulation:
 
             output['COST_OPTIMAL'] = total_cost_optimal
             output['COST'] = total_cost
-            output['COST_WITHOUT_INFORM'] = total_cost_without_inform
+            output['COST_WITHOUT_INFORM'] = total_cost - total_inform_cost
             output['COST_INFORM'] = total_inform_cost
             output['STRETCH'] = total_stretch
 
