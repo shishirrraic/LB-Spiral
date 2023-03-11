@@ -64,6 +64,9 @@ for type in files_to_read:
                 # res_json = pandas.read_json(filename,index=[0])
                 data = json.load(open(filename))
 
+                # remove results, too heavy
+                data.pop('results')
+
                 if node_count in json_result[type]:
                     if op_count in json_result[type][node_count]:
                         json_result[type][node_count][op_count].append(data)
