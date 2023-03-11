@@ -766,7 +766,7 @@ class Simulation:
                 total_t_hops = total_t_hops + result['t_hops']
 
             # output = dict()
-            output['results'] = results
+            # output['results'] = results
 
             output['COST_OPTIMAL'] = total_cost_optimal
             output['COST'] = total_cost
