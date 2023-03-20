@@ -53,6 +53,7 @@ for file in filenames:
 # print(files_to_read)
 
 json_result = {}
+types.reverse()
 for type in types:
     json_result[type] = {}
 
@@ -63,6 +64,10 @@ for type in files_to_read:
                 filename = './results/' + res
                 # res_json = pandas.read_json(filename,index=[0])
                 data = json.load(open(filename))
+
+                # remove results, too heavy
+                if 'results' in data:
+                    data.pop('results')
 
                 if node_count in json_result[type]:
                     if op_count in json_result[type][node_count]:
@@ -94,7 +99,7 @@ for type in json_result:
                 dataframe_map_communication_cost[node_count][op_count] = {}
 
 # todo change reps to a variable
-reps = 1
+reps = 10
 
 
 processing_load_result = {}
@@ -152,7 +157,10 @@ for type in json_result:
 
                 round += 1
                 # dataframe_map_communication_cost[node_count][op_count].setdefault('COST_OPTIMAL', []).append(res['COST_OPTIMAL'])
-                if type == "LBSPIRAL":
+                if type == "SPIRAL":
+                    dataframe_map_communication_cost[node_count][op_count].setdefault('SPRIAL_COST', []).append(
+                        res['COST'])
+                elif type == "LBSPIRAL":
                     dataframe_map_communication_cost[node_count][op_count].setdefault('COST_OPTIMAL', []).append(
                         res['COST_OPTIMAL'])
 
@@ -162,9 +170,7 @@ for type in json_result:
                         res['COST_INFORM'])
                     dataframe_map_communication_cost[node_count][op_count].setdefault('LB_SPRIAL_COST',[]).append(
                         res['COST'])
-                elif type == "SPIRAL":
-                    dataframe_map_communication_cost[node_count][op_count].setdefault('SPRIAL_COST', []).append(
-                        res['COST'])
+
 print (dataframe_map_communication_cost)
 with ExcelWriter('output.xlsx') as writer:
     workbook = writer.book
@@ -201,6 +207,9 @@ with ExcelWriter('output.xlsx') as writer:
             worksheet.write_formula(1, col_char + 4,
                                     '=(' + get_string(65 + (reps + 3) * 3 + 2 + 2) + str(1) + ')')
             for x in range(0, int(node_count)):
+                worksheet.write_formula(2 + x,
+                                        col_char + 1,
+                                        str(x + 1))
                 worksheet.write_formula(2 + x,
                                         col_char + 2,
                                         '=(' + get_string(65 + reps + 3) + str(x + 3) + ')')
