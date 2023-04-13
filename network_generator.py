@@ -3,11 +3,25 @@ import os
 import math
 from random import randint
 import networkx as nx
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import random
 from networkx.readwrite import json_graph
 
-num_nodes = 64
+# num_nodes = 1024
+
+#  0 ≤ β ≤ 1 0\leq \beta \leq 1 and N ≫ K ≫ ln ⁡ N ≫ 1 {\displaystyle N\gg K\gg \ln N\gg 1}
+# k = 50
+# num_nodes = 512
+# k = 28
+# num_nodes = 256
+# k = 20
+num_nodes = 128
+k = 17
+# num_nodes = 64
+# k = 16
+
+watts_strogatz_prob = 0.3
+
 erdos_renyi_prob = 0.01
 internet_graph_seed = None  # optional
 
@@ -75,6 +89,16 @@ def build_internet_graph():
     assert nx.is_connected(internet_graph)
     return internet_graph
 
+def build_small_world_graph():
+
+    small_world_graph = nx.connected_watts_strogatz_graph(num_nodes, k, watts_strogatz_prob, tries=1000, seed=None)
+    # create a random mapping old label -> new label
+    node_mapping = dict(zip(small_world_graph.nodes(), sorted(small_world_graph.nodes(), key=lambda k: random.random())))
+    small_world_graph = nx.relabel_nodes(small_world_graph, node_mapping)
+    add_edge_weights(small_world_graph)
+
+    assert nx.is_connected(small_world_graph)
+    return small_world_graph
 
 def build_grid_graph():
     grid_row = int(math.sqrt(num_nodes))
@@ -92,10 +116,14 @@ def build_graphs():
     # write_to_a_file(random_graph, "random")
     # draw(random_graph)
 
-    internet_graph = build_internet_graph()
-    # draw(internet_graph)
-    write_to_a_file(internet_graph, "internet")
-    # draw(internet_graph)
+    # internet_graph = build_internet_graph()
+    # # draw(internet_graph)
+    # write_to_a_file(internet_graph, "internet")
+    # # draw(internet_graph)
+
+
+    small_world_graph = build_small_world_graph()
+    write_to_a_file(small_world_graph, "small_world")
 
     # grid_graph = build_grid_graph()
     # write_to_a_file(grid_graph, "grid")
@@ -139,11 +167,12 @@ def test_graphs():
 
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
+        if 'small' in filename:
 
-        print(os.path.join(directory, filename))
-        graph = nx.read_graphml(os.path.join(directory, filename))
-
-        draw(graph)
+            print(os.path.join(directory, filename))
+            graph = nx.read_graphml(os.path.join(directory, filename))
+            print(get_diameter(graph))
+        # draw(graph)
 
 
 if __name__ == '__main__':
