@@ -7,20 +7,20 @@ import networkx as nx
 import random
 from networkx.readwrite import json_graph
 
-# num_nodes = 1024
-
 #  0 ≤ β ≤ 1 0\leq \beta \leq 1 and N ≫ K ≫ ln ⁡ N ≫ 1 {\displaystyle N\gg K\gg \ln N\gg 1}
-# k = 50
+
+num_nodes = 1024
+k = 50
 # num_nodes = 512
 # k = 28
 # num_nodes = 256
 # k = 20
-num_nodes = 128
-k = 17
+# num_nodes = 128
+# k = 17
 # num_nodes = 64
 # k = 16
 
-watts_strogatz_prob = 0.3
+watts_strogatz_prob = 0.03
 
 erdos_renyi_prob = 0.01
 internet_graph_seed = None  # optional
@@ -176,5 +176,5 @@ def test_graphs():
 
 
 if __name__ == '__main__':
-    build_graphs()
-    # test_graphs()
+    # build_graphs()
+    test_graphs()
