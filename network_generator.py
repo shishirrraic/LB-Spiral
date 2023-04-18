@@ -9,16 +9,16 @@ from networkx.readwrite import json_graph
 
 #  0 ≤ β ≤ 1 0\leq \beta \leq 1 and N ≫ K ≫ ln ⁡ N ≫ 1 {\displaystyle N\gg K\gg \ln N\gg 1}
 
-num_nodes = 1024
-k = 50
+# num_nodes = 1024
+# k = 50
 # num_nodes = 512
 # k = 28
 # num_nodes = 256
 # k = 20
 # num_nodes = 128
 # k = 17
-# num_nodes = 64
-# k = 16
+num_nodes = 64
+k = 15
 
 watts_strogatz_prob = 0.03
 
@@ -32,10 +32,15 @@ def add_edge_weights(graph):
         graph.add_edge(e[0], e[1], weight=w)
 
 
-def get_diameter(graph):
-    paths_for_diameter = nx.shortest_path_length(graph, weight='weight')
-    ecc = nx.eccentricity(graph, sp=dict(paths_for_diameter))
-    diameter = nx.diameter(graph, e=ecc)
+def get_diameter(graph, weighted = False):
+    if weighted:
+        paths_for_diameter = nx.shortest_path_length(graph, weight='weight')
+        ecc = nx.eccentricity(graph, sp=dict(paths_for_diameter))
+        diameter = nx.diameter(graph, e=ecc)
+    else:
+        paths_for_diameter = nx.shortest_path_length(graph)
+        ecc = nx.eccentricity(graph, sp=dict(paths_for_diameter))
+        diameter = nx.diameter(graph, e=ecc)
     return diameter
 
 
@@ -159,7 +164,7 @@ def draw(graph):
     print(graph)
     print(graph.nodes())
     print("THE GRAPH")
-    plt.show()
+    # plt.show()
 
 
 def test_graphs():
@@ -167,11 +172,12 @@ def test_graphs():
 
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
-        if 'small' in filename:
+        if 'small' in filename and 'network' not in filename:
 
             print(os.path.join(directory, filename))
             graph = nx.read_graphml(os.path.join(directory, filename))
-            print(get_diameter(graph))
+            print("WEIGHTED: ", get_diameter(graph, True))
+            print("UNWEIGHTED: ", get_diameter(graph, False))
         # draw(graph)
 
 
